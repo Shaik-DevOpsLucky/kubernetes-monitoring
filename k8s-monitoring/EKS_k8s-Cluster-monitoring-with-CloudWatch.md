@@ -22,6 +22,53 @@ Ensure the following are installed and configured:
 
 ---
 
+### Install AWS CLI
+```bash
+sudo apt update
+curl -o awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+sudo apt install unzip
+unzip awscliv2.zip
+sudo ./aws/install
+```
+
+**Configure AWS CLI:**
+```bash
+aws configure
+```
+
+Enter your Access Key ID, Secret Access Key, region (e.g., `us-east-1`), and output format when prompted.
+
+---
+
+## NOTE: IF you don't wish to use SECRETE_KEY & SECRETE_ACCESS_KEYS you can use the IAM ROle with ADMINISTRATOR policy and attach that policy to EC2 Instance.
+
+---
+
+### Install kubectl
+```bash
+curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin
+```
+
+**Verify installation:**
+```bash
+kubectl version --short --client
+```
+
+---
+
+### Install eksctl
+```bash
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+```
+
+**Verify installation:**
+```bash
+eksctl version
+```
+
 ## Step 1: Create EKS Cluster
 
 Create an Amazon EKS cluster with managed node groups.
