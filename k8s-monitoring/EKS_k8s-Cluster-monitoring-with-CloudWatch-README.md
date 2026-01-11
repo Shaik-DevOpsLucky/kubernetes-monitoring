@@ -110,6 +110,15 @@ This policy allows worker nodes to send logs and metrics to CloudWatch.
 
 ---
 
+mv ~/.kube/config ~/.kube/config.bak
+
+## Update the kubeconfig:
+```bash
+aws eks update-kubeconfig \
+  --region ap-south-1 \
+  --name ekswithshaik
+```
+
 ## Step 4: Install CloudWatch Observability Add-on
 
 Install the official Amazon CloudWatch Observability add-on.
