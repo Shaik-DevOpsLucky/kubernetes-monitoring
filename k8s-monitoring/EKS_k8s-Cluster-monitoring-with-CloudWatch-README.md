@@ -1,5 +1,4 @@
 
-````md
 # EKS Monitoring with Amazon CloudWatch
 
 This repository explains step-by-step how to monitor an Amazon EKS cluster using the Amazon CloudWatch Observability add-on.
@@ -20,9 +19,7 @@ Ensure the following are installed and configured:
 
 ---
 
----
-
-### Install AWS CLI
+## Install AWS CLI
 ```bash
 sudo apt update
 curl -o awscliv2.zip https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
@@ -31,7 +28,7 @@ unzip awscliv2.zip
 sudo ./aws/install
 ```
 
-**Configure AWS CLI:**
+## Configure AWS CLI:
 ```bash
 aws configure
 ```
@@ -44,27 +41,27 @@ Enter your Access Key ID, Secret Access Key, region (e.g., `us-east-1`), and out
 
 ---
 
-### Install kubectl
+## Install kubectl
 ```bash
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 ```
 
-**Verify installation:**
+## Verify installation:
 ```bash
 kubectl version --short --client
 ```
 
 ---
 
-### Install eksctl
+## Install eksctl
 ```bash
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 ```
 
-**Verify installation:**
+## Verify installation:
 ```bash
 eksctl version
 ```
@@ -72,7 +69,7 @@ eksctl version
 ## Step 1: Create EKS Cluster
 
 Create an Amazon EKS cluster with managed node groups.
-
+---
 ```bash
 eksctl create cluster \
   --name ekswithshaik \
@@ -91,7 +88,7 @@ eksctl create cluster \
 ## Step 2: Associate IAM OIDC Provider
 
 This step enables IAM Roles for Service Accounts (IRSA).
-
+---
 ```bash
 eksctl utils associate-iam-oidc-provider \
   --region ap-south-1 \
